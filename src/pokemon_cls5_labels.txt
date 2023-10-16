@@ -1,0 +1,5 @@
+squirtle
+bulbasaur
+charmander
+mewtwo
+pikachu
