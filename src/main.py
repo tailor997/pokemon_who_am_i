@@ -93,7 +93,7 @@ if __name__ == "__main__":
     try:
         main(labels=labels, model_addr=0x300000)
         #main(labels=labels, model_addr="/sd/model-90631.kmodel")
-    except Exception as e:
+    except :
         sys.print_exception(e)
         lcd_show_except(e)
     finally:
