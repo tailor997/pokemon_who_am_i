@@ -5,6 +5,9 @@ import gc, sys
 img_bk = image.Image("/flash/bk.jpg")
 img_who = image.Image("/flash/who.jpg")
 
+img_sensor = image.Image(size=(320,240))
+img_sensor_clip = image.Image(size=(100, 120))
+
 def init_dev():
     lcd.init(freq=15000000)
 
@@ -12,6 +15,7 @@ def init_dev():
     lcd.display(img_who,oft=(180,45))
 
     #lcd.clear((21, 70, 35))
+
 def init_sensor():
     sensor.reset()
     sensor.set_pixformat(sensor.RGB565)
@@ -20,9 +24,9 @@ def init_sensor():
     sensor.skip_frames()
 
 def ui_show():
-    img = sensor.snapshot()
-    img2 = img.resize(100, 100)
-    lcd.display(img2,oft=(30,30))
+    img_sensor = sensor.snapshot()
+    img_sensor_clip = img_sensor.resize(100, 120)
+    lcd.display(img_sensor_clip,oft=(30,28))
 
 #init_dev()
 if __name__ == "__main__":
@@ -34,7 +38,8 @@ if __name__ == "__main__":
         #gc.collect()
     init_dev()
     init_sensor()
-    ui_show()
+    while(True):
+        ui_show()
 
 
 
