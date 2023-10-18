@@ -4,7 +4,7 @@ print("files:", uos.listdir("/flash"))
 
 # bk.png
 try:
-    uos.remove("/flash/bk.png")
+    uos.remove("/flash/bk.jpg")
 except:
     print("There is no such file here.")
 finally:
