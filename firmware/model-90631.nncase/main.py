@@ -48,16 +48,16 @@ def main(labels = None, model_addr="/sd/m.kmodel", sensor_window=input_size, lcd
     lcd.clear(lcd.WHITE)
 
     if not labels:
-        with open('pokemon_cls5_labels.txt','r') as f:
+        with open('labels.txt','r') as f:
             exec(f.read())
     if not labels:
-        print("no pokemon_cls5_labels.txt")
+        print("no labels.txt")
         img = image.Image(size=(320, 240))
-        img.draw_string(90, 110, "no pokemon_cls5_labels.txt", color=(255, 0, 0), scale=2)
+        img.draw_string(90, 110, "no labels.txt", color=(255, 0, 0), scale=2)
         lcd.display(img)
         return 1
     try:
-        img = image.Image("Pikachu.jpg")
+        img = image.Image("startup.jpg")
         lcd.display(img)
     except Exception:
         img = image.Image(size=(320, 240))
@@ -73,7 +73,7 @@ def main(labels = None, model_addr="/sd/m.kmodel", sensor_window=input_size, lcd
         while(True):
             img = sensor.snapshot()
             t = time.ticks_ms()
-
+            fmap = kpu.forward(task, img)
             t = time.ticks_ms() - t
             plist=fmap[:]
             pmax=max(plist)
@@ -91,7 +91,7 @@ def main(labels = None, model_addr="/sd/m.kmodel", sensor_window=input_size, lcd
 
 if __name__ == "__main__":
     try:
-        main(labels=labels, model_addr=0x300000)
+         main(labels=labels, model_addr=0x300000)
         # main(labels=labels, model_addr="/sd/model-90631.kmodel")
     except Exception as e:
         sys.print_exception(e)

@@ -1,7 +1,8 @@
 import uos
 
-print("files:", uos.listdir("/flash"))
-
+print("flash files:", uos.listdir("/flash"))
+print("sd files:", uos.listdir("/sd"))
+print("sd files:", uos.listdir("/sd/1000_class_object_classification_model"))
 # bk.png
 try:
     uos.remove("/flash/bk.jpg")

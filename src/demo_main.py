@@ -8,6 +8,8 @@ img_who = image.Image("/flash/who.jpg")
 img_sensor = image.Image(size=(320,240))
 img_sensor_clip = image.Image(size=(100, 120))
 
+labels = ['squirtle', 'bulbasaur', 'charmander', 'mewtwo', 'pikachu']
+
 def init_dev():
     lcd.init(freq=15000000)
 
